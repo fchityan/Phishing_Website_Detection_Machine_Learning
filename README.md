@@ -19,7 +19,7 @@ The project implements an end-to-end machine learning pipeline for phishing webs
 	requirements.txt          
 	README.md                  
 
-2. Pipeline Overview (Design & Flow)
+3. Pipeline Overview (Design & Flow)
 
    Phishing.db -> Data Ingestion (data_loader.load_data) -> Preprocessing Pipeline (Missing Values, Scaling Numeric) -> Model Training (Gradient Boosting, Logistic Regression,
    Random Forest) -> Model Evaluation (Precision, Recall, F1 Score)
