@@ -13,11 +13,11 @@ The project implements an end-to-end machine learning pipeline for phishing webs
 
 	github/
 	src/ (data_loader.py, preprocessing.py, models.py, evaluation.py, main.py, __init__.py)
-	phishing.db
 	eda.ipynb
 	run.sh                     
 	requirements.txt          
-	README.md                  
+	README.md
+	phishing.db               
 
 3. Pipeline Overview (Design & Flow)
 
