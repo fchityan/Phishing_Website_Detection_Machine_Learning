@@ -11,20 +11,13 @@ The project implements an end-to-end machine learning pipeline for phishing webs
 
 1. Repository Structure
 
-	├── .github/                   # GitHub Actions (auto-installs requirements & runs run.sh)
-	├── src/
-	│   ├── data_loader.py         # Data ingestion from SQLite, feature/target split
-	│   ├── preprocessing.py        # Cleaning, imputation, scaling, encoding
-	│   ├── models.py              # ML model definitions (LogReg, RandomForest, GradientBoosting)
-	│   ├── evaluation.py          # Metrics calculation & pretty printing
-	│   ├── main.py                # Main pipeline entry point
-	│   ├── __init__.py
-	├── phishing.db                # Provided dataset (SQLite)
-	├── eda.ipynb                  # Exploratory Data Analysis notebook (Task 1)
-	├── run.sh                     # Script executed by GitHub Actions
-	├── requirements.txt           # Python dependencies
-	└── README.md                  # Project documentation
-
+	github/                   
+	src/ (data_loader.py, preprocessing.py, models.py, evaluation.py, main.py, __init__.py)
+	phishing.db                
+	eda.ipynb                  
+	run.sh                     
+	requirements.txt          
+	README.md                  
 
 2. Pipeline Overview (Design & Flow)
 
