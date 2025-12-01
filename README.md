@@ -11,13 +11,7 @@ The project implements an end-to-end machine learning pipeline for phishing webs
 
 1. Repository Structure
 
-	github/
-	src/ (data_loader.py, preprocessing.py, models.py, evaluation.py, main.py, __init__.py)
-	eda.ipynb
-	run.sh                     
-	requirements.txt          
-	README.md
-	phishing.db               
+	github, src (data_loader.py, preprocessing.py, models.py, evaluation.py, main.py, __init__.py), eda.ipynb, run.sh, requirements.txt, README.md, phishing.db               
 
 3. Pipeline Overview (Design & Flow)
 
