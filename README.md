@@ -1,12 +1,5 @@
-# AIAP22-Foo-Chit-Yan-053I
+### Phishing Website Detection
 
-AIAP22 – End-to-End Machine Learning Pipeline
-
-Full Name: Foo Chit Yan
-
-Email: cyfoo@hotmail.sg
-
-This repository contains my submission for AI Singapore’s AI Apprenticeship Programme (AIAP) – Technical Assessment (Batch 22).
 The project implements an end-to-end machine learning pipeline for phishing website detection using the provided SQLite dataset.
 
 1. Repository Structure
