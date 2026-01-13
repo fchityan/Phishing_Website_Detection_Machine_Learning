@@ -1,63 +1,121 @@
-### Phishing Website Detection
+🎣 Phishing Website Detection
 
-The project implements an end-to-end machine learning pipeline for phishing website detection using the provided SQLite dataset.
 
-1. Repository Structure
+📌 Project Overview
 
-	github, src (data_loader.py, preprocessing.py, models.py, evaluation.py, main.py, __init__.py), eda.ipynb, run.sh, requirements.txt, README.md, phishing.db               
+This project implements a complete machine learning pipeline for detecting phishing websites using a structured dataset stored in a SQLite database.
 
-3. Pipeline Overview (Design & Flow)
+The pipeline covers the full lifecycle:
 
-   Phishing.db -> Data Ingestion (data_loader.load_data) -> Preprocessing Pipeline (Missing Values, Scaling Numeric) -> Model Training (Gradient Boosting, Logistic Regression,
-   Random Forest) -> Model Evaluation (Precision, Recall, F1 Score)
+	•	Data ingestion
+	•	Exploratory analysis
+	•	Feature preprocessing
+	•	Model training
+	•	Model evaluation
 
-4. Dataset Summary
-	•	10,500 rows, 16 features, including both numeric and categorical fields.
-	•	Target variable: label (phishing vs legitimate)
-	
-	Notable Observations
-	•	Highly skewed numeric distributions → required scaling (StandardScaler)
-	•	Some features included negative values due to bad data (e.g., NoOfImage = -31) → flagged for cleaning
-	•	“Unnamed: 0” identified as an index column → removed before training
-	•	Categorical features (Industry, HostingProvider) had missing values → required imputation
-	•	Correlation analysis showed strongest signals in:
+The goal is to accurately distinguish phishing websites from legitimate websites, with particular emphasis on recall, as false negatives can have serious security implications.
+
+📊 Dataset Summary:
+
+	•	📦 Total rows: 10,500
+	•	🧮 Total features: 16
+	•	🔢 Feature types: Numeric + Categorical
+	•	🎯 Target variable: label
+	•	Phishing
+	•	Legitimate
+
+🔍 Key Observations from EDA
+
+Exploratory data analysis revealed several important insights:
+
+	•	📉 Numeric features showed high skewness, requiring scaling
+	•	⚠️ Invalid negative values detected
+	•	Example: NoOfImage = -31
+	•	🗑️ Unnamed: 0 identified as an index column and removed
+	•	🏷️ Categorical features (Industry, HostingProvider) contained missing values
+	•	🔗 Strong correlations identified in:
 	•	NoOfSelfRedirect
 	•	LargestLineLength
 	•	DomainAgeMonths
 	•	Robots (binary)
 
-	Outliers
-	•	Severe outliers existed in numeric fields
-	•	Boxplots guided scaling + model selection
+📦 Outlier Analysis:
 
-4. Feature Processing Summary
+	•	🚨 Severe outliers present in multiple numeric features
+	•	📊 Boxplots were used to visualize distributions
+	•	⚖️ Findings influenced:
+	•	Scaling decisions
+	•	Model selection (tree-based models preferred)
 
-   Feature Type: Numeric, Categorical, Dropped Columns, Target Variable
-   Columns: Total 13 columns (Median imputation + StandardScaler)
-   Categorical: Industry, HostingProvider (Most frequent imputation)
-   Dropped: Unnamed: 0 (Remove the whole column entirely)
-   Target Variable: Label (Stratified split)
+🏷️ Feature Processing Summary
 
-5. Model Selection
+🔢 Numeric Features:
 
-   Logistic Regression: Fast, interpretable baseline
-   Performs well on datasets with many linear relationships
+	•	Total: 13 columns
+	•	🩹 Missing values: Median imputation
+	•	📐 Scaling: StandardScaler
 
-   Random Forest: Handles non-linear patterns
-   Robust to outliers & missing values
-   Works well with mixed feature types
+🔠 Categorical Features:
 
-   Gradient Boosting: More powerful sequential tree ensemble
-   More powerful sequential tree ensemble
-   More powerful sequential tree ensemble
+	•	Industry
+	•	HostingProvider
+	•	🩹 Missing values: Most frequent value imputation
 
-6. Model Evaluation Results
+🗑️ Dropped Columns:
 
-   Random forest and gradient boosting outperform logistic regression significantly.
-   Random Forest shows the best recall -> useful in phishing detection
-   Gradient boosting shows the best accuracy -> balanced strong performer
+	•	Unnamed: 0
+	•	Removed entirely before modeling
+
+🎯 Target Variable:
+
+	•	Label
+	•	Used stratified train-test split
    
-   
+🤖 Model Selection
 
+Three classifiers were evaluated to compare performance across different modeling strategies:
 
+📉 Logistic Regression:
 
+	•	Fast and interpretable baseline
+	•	Performs well on linear relationships
+	•	Used for benchmarking
+
+🌳 Random Forest:
+
+	•	Handles non-linear patterns effectively
+	•	Robust to outliers and noise
+	•	Performs well with mixed feature types
+
+🚀 Gradient Boosting:
+
+	•	Sequential tree-based ensemble
+	•	Strong predictive power
+	•	Captures complex interactions between features
+
+📈 Model Evaluation Metrics
+
+Models were evaluated using:
+
+	•	Precision
+	•	Recall
+	•	F1 Score
+
+🏆 Model Evaluation Results:
+
+	•	🌳 Random Forest
+	•	Best recall
+	•	Particularly valuable for phishing detection, where missing a phishing site is costly
+	•	🚀 Gradient Boosting
+	•	Best overall accuracy
+	•	Strong balanced performance across metrics
+	•	📉 Logistic Regression
+	•	Performed significantly worse than tree-based models
+	•	Useful primarily as a baseline
+
+✅ Key Takeaways:
+
+	•	📊 Proper preprocessing is critical for skewed and noisy web data
+	•	🌳 Tree-based models outperform linear models for phishing detection
+	•	🚨 Recall is a key metric in security-focused classification tasks
+	•	⚖️ Scaling and outlier handling directly affect downstream performance
